@@ -14,6 +14,7 @@ namespace IntegraBrasilApi.Services
             _mapper = mapper;
             _brasilApi = brasilApi;
         }
+
         public async Task<ResponseGenerico<List<BancoResponse>>> BuscarTodos()
         {
             var bancos = await _brasilApi.BuscarTodosBancos();

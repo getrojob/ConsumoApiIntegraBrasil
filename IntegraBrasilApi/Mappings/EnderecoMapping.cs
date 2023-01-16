@@ -10,7 +10,6 @@ namespace IntegraBrasilApi.Mappings
         {
             CreateMap(typeof(ResponseGenerico<>), typeof(ResponseGenerico<>));
             CreateMap<EnderecoResponse, EnderecoModel>().ReverseMap();
-
         }
     }
 }

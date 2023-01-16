@@ -1,7 +1,7 @@
-using System.ComponentModel.DataAnnotations;
-using System.Net;
 using IntegraBrasilApi.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+using System.Net;
 
 namespace IntegraBrasilApi.Controllers
 {
@@ -10,6 +10,7 @@ namespace IntegraBrasilApi.Controllers
     public class BancoController : ControllerBase
     {
         public readonly IBancoService _bancoService;
+
         public BancoController(IBancoService bancoService)
         {
             _bancoService = bancoService;

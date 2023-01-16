@@ -6,7 +6,6 @@ namespace IntegraBrasilApi.Services
 {
     public class EnderecoService : IEnderecoService
     {
-
         private readonly IMapper _mapper;
         private readonly IBrasilApi _brasilApi;
 
@@ -15,6 +14,7 @@ namespace IntegraBrasilApi.Services
             _mapper = mapper;
             _brasilApi = brasilApi;
         }
+
         public async Task<ResponseGenerico<EnderecoResponse>> BuscarEndereco(string cep)
         {
             var endereco = await _brasilApi.BuscarEnderecoPorCEP(cep);

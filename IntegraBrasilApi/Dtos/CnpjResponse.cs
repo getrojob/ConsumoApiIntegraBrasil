@@ -1,4 +1,3 @@
-
 namespace IntegraBrasilApi.Dtos
 {
     public class CnpjResponse

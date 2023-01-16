@@ -1,15 +1,15 @@
-using AutoMapper;
+﻿using AutoMapper;
 using IntegraBrasilApi.Dtos;
 using IntegraBrasilApi.Model;
 
 namespace IntegraBrasilApi.Mappings
 {
-    public class BancoMapping : Profile
+    public class FeriadoMapping : Profile
     {
-        public BancoMapping()
+        public FeriadoMapping()
         {
             CreateMap(typeof(ResponseGenerico<>), typeof(ResponseGenerico<>));
-            CreateMap<BancoResponse, BancoModel>().ReverseMap();
+            CreateMap<FeriadosNacionalResponse, FeriadosNacionalModel>().ReverseMap();
         }
     }
 }

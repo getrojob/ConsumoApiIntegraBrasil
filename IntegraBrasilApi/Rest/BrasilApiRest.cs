@@ -1,8 +1,8 @@
-using System.Dynamic;
-using System.Text.Json;
 using IntegraBrasilApi.Dtos;
 using IntegraBrasilApi.Interfaces;
 using IntegraBrasilApi.Model;
+using System.Dynamic;
+using System.Text.Json;
 
 namespace IntegraBrasilApi.Rest
 {
@@ -57,6 +57,7 @@ namespace IntegraBrasilApi.Rest
                 return response;
             }
         }
+
         public async Task<ResponseGenerico<BancoModel>> BuscarBanco(string codigo)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, $"https://brasilapi.com.br/api/banks/v1/{codigo}");
@@ -108,7 +109,34 @@ namespace IntegraBrasilApi.Rest
                     response.ErroRetorno = JsonSerializer.Deserialize<ExpandoObject>(contentResp);
                 }
                 return response;
+            }
+        }
 
+        public async Task<ResponseGenerico<List<FeriadosNacionalModel>>> BuscarFeriado(string ano)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://brasilapi.com.br/api/feriados/v1/{ano}");
+
+            var response = new ResponseGenerico<List<FeriadosNacionalModel>>();
+
+            using (var client = new HttpClient())
+            {
+                var responseBrasilApi = await client.SendAsync(request);
+
+                var contentResp = await responseBrasilApi.Content.ReadAsStringAsync();
+
+                var objResponse = JsonSerializer.Deserialize<List<FeriadosNacionalModel>>(contentResp);
+
+                if (responseBrasilApi.IsSuccessStatusCode)
+                {
+                    response.CodigoHttp = responseBrasilApi.StatusCode;
+                    response.DadosRetorno = objResponse;
+                }
+                else
+                {
+                    response.CodigoHttp = responseBrasilApi.StatusCode;
+                    response.ErroRetorno = JsonSerializer.Deserialize<ExpandoObject>(contentResp);
+                }
+                return response;
             }
         }
     }

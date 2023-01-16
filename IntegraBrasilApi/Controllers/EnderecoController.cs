@@ -1,6 +1,6 @@
-using System.Net;
 using IntegraBrasilApi.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace IntegraBrasilApi.Controllers
 {
@@ -9,6 +9,7 @@ namespace IntegraBrasilApi.Controllers
     public class EnderecoController : ControllerBase
     {
         public readonly IEnderecoService _enderecoService;
+
         public EnderecoController(IEnderecoService enderecoService)
         {
             _enderecoService = enderecoService;
